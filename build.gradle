@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.5.RELEASE'
+        springBootVersion = '2.1.0.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -10,9 +10,12 @@ buildscript {
     }
 }
 
+plugins {
+    id 'org.springframework.boot' version '2.1.0.RELEASE' apply false
+}
+
 apply plugin: 'java-library'
 apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.cswhite'
@@ -41,6 +44,7 @@ dependencies {
 
 dependencyManagement {
     imports {
+        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
     dependencies {
