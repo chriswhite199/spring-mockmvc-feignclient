@@ -1,5 +1,7 @@
 # Spring Mock Feign Clients
 
+[![Build Status](https://travis-ci.org/chriswhite199/spring-mockmvc-feignclient.svg?branch=master)](https://travis-ci.org/chriswhite199/spring-mockmvc-feignclient)
+
 Simple library for testing Feign Clients using MockMvc or TestRestTemplate instances.
 
 Useful for when you want to test your Spring REST Controllers and associated Feign Client for compatibility.
