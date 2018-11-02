@@ -5,7 +5,7 @@ jdk:
   - oraclejdk8
 
 script:
-  - ./gradlew build --scan -s -PossrhUsername=none -PossrhPassword=none
+  - ./gradlew build coveralls --scan -s
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
