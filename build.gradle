@@ -18,8 +18,6 @@ plugins {
 apply plugin: 'java-library'
 apply plugin: 'eclipse'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'maven'
-apply plugin: 'signing'
 
 group = 'com.github.chriswhite199'
 version = '0.0.1-SNAPSHOT'
@@ -49,10 +47,6 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
-signing {
-    sign configurations.archives
-}
-
 buildScan {
     termsOfServiceUrl = 'https://gradle.com/terms-of-service'
     termsOfServiceAgree = 'yes'
@@ -79,44 +73,53 @@ dependencyManagement {
     }
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+if (project.hasProperty('nexus')) {
+    apply plugin: 'maven'
+    apply plugin: 'signing'
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
+    signing {
+        sign configurations.archives
+    }
 
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-            pom.project {
-                name 'Feign Mock MVC Client Implementations'
-                packaging 'jar'
-                artifactId 'feign-mock-mvc-test'
-                description 'Feign Client implementations for Spring Mock MVC usage'
-                url 'https://github.com/chriswhite199/spring-mockmvc-feignclient'
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
 
-                scm {
-                    connection 'scm:git:https://github.com/chriswhite199/spring-mockmvc-feignclient.git'
-                    developerConnection 'scm:git:https://github.com/chriswhite199/spring-mockmvc-feignclient.git'
+                snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                    authentication(userName: ossrhUsername, password: ossrhPassword)
+                }
+
+                pom.project {
+                    name 'Feign Mock MVC Client Implementations'
+                    packaging 'jar'
+                    artifactId 'feign-mock-mvc-test'
+                    description 'Feign Client implementations for Spring Mock MVC usage'
                     url 'https://github.com/chriswhite199/spring-mockmvc-feignclient'
-                }
 
-                licenses {
-                    license {
-                        name 'The Apache License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    scm {
+                        connection 'scm:git:https://github.com/chriswhite199/spring-mockmvc-feignclient.git'
+                        developerConnection 'scm:git:https://github.com/chriswhite199/spring-mockmvc-feignclient.git'
+                        url 'https://github.com/chriswhite199/spring-mockmvc-feignclient'
                     }
-                }
 
-                developers {
-                    developer {
-                        id 'chriswhite199'
-                        name 'Chris White'
-                        email 'chriswhite199@gmail.com'
+                    licenses {
+                        license {
+                            name 'The Apache License, Version 2.0'
+                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'chriswhite199'
+                            name 'Chris White'
+                            email 'chriswhite199@gmail.com'
+                        }
                     }
                 }
             }
