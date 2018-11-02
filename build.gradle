@@ -20,7 +20,7 @@ apply plugin: 'eclipse'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.github.chriswhite199'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 archivesBaseName = 'feign-mock-mvc-test'
 sourceCompatibility = 1.8
 
