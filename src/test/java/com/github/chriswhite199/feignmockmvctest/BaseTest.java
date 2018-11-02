@@ -1,7 +1,7 @@
-package com.cswhite.feignmockmvctest;
+package com.github.chriswhite199.feignmockmvctest;
 
-import com.cswhite.feignmockmvctest.controller.TestController;
-import com.cswhite.feignmockmvctest.model.Store;
+import com.github.chriswhite199.feignmockmvctest.controller.TestController;
+import com.github.chriswhite199.feignmockmvctest.model.Store;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,4 +1,4 @@
-package com.cswhite.feignmockmvctest.model;
+package com.github.chriswhite199.feignmockmvctest.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

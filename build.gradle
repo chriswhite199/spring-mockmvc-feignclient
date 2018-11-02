@@ -12,14 +12,18 @@ buildscript {
 
 plugins {
     id 'org.springframework.boot' version '2.1.0.RELEASE' apply false
+    id 'com.gradle.build-scan' version '1.16'
 }
 
 apply plugin: 'java-library'
 apply plugin: 'eclipse'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
-group = 'com.cswhite'
+group = 'com.github.chriswhite199'
 version = '0.0.1-SNAPSHOT'
+archivesBaseName = 'feign-mock-mvc-test'
 sourceCompatibility = 1.8
 
 repositories {
@@ -29,6 +33,24 @@ repositories {
 ext {
     springCloudVersion = 'Finchley.SR2'
     lombokVersion = '1.18.2'
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
 }
 
 buildScan {
@@ -54,5 +76,50 @@ dependencyManagement {
     }
     dependencies {
         dependency "org.projectlombok:lombok:${lombokVersion}"
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'Feign Mock MVC Client Implementations'
+                packaging 'jar'
+                artifactId 'feign-mock-mvc-test'
+                description 'Feign Client implementations for Spring Mock MVC usage'
+                url 'https://github.com/chriswhite199/spring-mockmvc-feignclient'
+
+                scm {
+                    connection 'scm:git:https://github.com/chriswhite199/spring-mockmvc-feignclient.git'
+                    developerConnection 'scm:git:https://github.com/chriswhite199/spring-mockmvc-feignclient.git'
+                    url 'https://github.com/chriswhite199/spring-mockmvc-feignclient'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'chriswhite199'
+                        name 'Chris White'
+                        email 'chriswhite199@gmail.com'
+                    }
+                }
+            }
+        }
     }
 }

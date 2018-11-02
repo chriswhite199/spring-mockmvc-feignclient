@@ -1,6 +1,6 @@
-package com.cswhite.feignmockmvctest;
+package com.github.chriswhite199.feignmockmvctest;
 
-import com.cswhite.feignmockmvctest.config.MockMvcFeignConfiguration;
+import com.github.chriswhite199.feignmockmvctest.config.MockMvcFeignConfiguration;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;

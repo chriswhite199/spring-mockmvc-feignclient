@@ -1,4 +1,4 @@
-package com.cswhite.feignmockmvctest;
+package com.github.chriswhite199.feignmockmvctest;
 
 import feign.Client;
 import feign.Request;
@@ -16,9 +16,6 @@ import java.net.URLDecoder;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.cswhite.feignmockmvctest.FeignRequestUtils.convertRequestHeaders;
-import static com.cswhite.feignmockmvctest.FeignRequestUtils.convertRequestMethod;
-
 /**
  * Feign {@link Client} implementation that uses {@link MockMvc} instance
  */
@@ -32,9 +29,9 @@ public class MockMvcFeignClient implements Client {
         // MockMvc path to controller doesn't decode the + char to spaces
         String decodedUrl = URLDecoder.decode(request.url(), "UTF-8");
 
-        HttpMethod method = convertRequestMethod(request);
+        HttpMethod method = FeignRequestUtils.convertRequestMethod(request);
         byte[] body = request.body();
-        HttpHeaders httpHeaders = convertRequestHeaders(request);
+        HttpHeaders httpHeaders = FeignRequestUtils.convertRequestHeaders(request);
 
         MvcResult mvcResult = this.mockMvc.perform(
                 MockMvcRequestBuilders.request(method, decodedUrl)

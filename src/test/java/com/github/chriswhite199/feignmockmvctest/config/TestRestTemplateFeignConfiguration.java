@@ -1,9 +1,8 @@
-package com.cswhite.feignmockmvctest.config;
+package com.github.chriswhite199.feignmockmvctest.config;
 
-import com.cswhite.feignmockmvctest.RestTemplateFeignClient;
+import com.github.chriswhite199.feignmockmvctest.RestTemplateFeignClient;
 import feign.Client;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 public class TestRestTemplateFeignConfiguration {
     @Bean

@@ -1,4 +1,4 @@
-package com.cswhite.feignmockmvctest;
+package com.github.chriswhite199.feignmockmvctest;
 
 import feign.Client;
 import feign.Request;
@@ -17,8 +17,8 @@ import java.net.URL;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.cswhite.feignmockmvctest.FeignRequestUtils.convertRequestHeaders;
-import static com.cswhite.feignmockmvctest.FeignRequestUtils.convertRequestMethod;
+import static com.github.chriswhite199.feignmockmvctest.FeignRequestUtils.convertRequestHeaders;
+import static com.github.chriswhite199.feignmockmvctest.FeignRequestUtils.convertRequestMethod;
 
 /**
  * Feign {@link Client} implementation that uses {@link TestRestTemplate} instance

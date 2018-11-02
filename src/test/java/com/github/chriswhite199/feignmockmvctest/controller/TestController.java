@@ -1,6 +1,6 @@
-package com.cswhite.feignmockmvctest.controller;
+package com.github.chriswhite199.feignmockmvctest.controller;
 
-import com.cswhite.feignmockmvctest.model.Store;
+import com.github.chriswhite199.feignmockmvctest.model.Store;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 

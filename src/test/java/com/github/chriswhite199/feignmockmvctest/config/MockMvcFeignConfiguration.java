@@ -1,6 +1,6 @@
-package com.cswhite.feignmockmvctest.config;
+package com.github.chriswhite199.feignmockmvctest.config;
 
-import com.cswhite.feignmockmvctest.MockMvcFeignClient;
+import com.github.chriswhite199.feignmockmvctest.MockMvcFeignClient;
 import feign.Client;
 import org.springframework.context.annotation.Bean;
 

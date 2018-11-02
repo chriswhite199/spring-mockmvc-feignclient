@@ -1,4 +1,4 @@
-package com.cswhite.feignmockmvctest;
+package com.github.chriswhite199.feignmockmvctest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
