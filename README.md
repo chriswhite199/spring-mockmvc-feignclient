@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/chriswhite199/spring-mockmvc-feignclient.svg?branch=master)](https://travis-ci.org/chriswhite199/spring-mockmvc-feignclient)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.chriswhite199/feign-mock-mvc-test.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.chriswhite199%22%20AND%20a:%22feign-mock-mvc-test%22)
+[![Coverage Status](https://coveralls.io/repos/github/chriswhite199/spring-mockmvc-feignclient/badge.svg)](https://coveralls.io/github/chriswhite199/spring-mockmvc-feignclient)
 
 Simple library for testing Feign Clients using MockMvc or TestRestTemplate instances.
 
